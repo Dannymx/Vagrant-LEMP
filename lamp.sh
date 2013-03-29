@@ -24,7 +24,7 @@ echo ""
 echo "#########################"
 echo "#    INSTALLING PHP5    #"
 echo "#########################"
-aptitude install -y php5
+aptitude install -y php5 php5-mysql
 
 # composer
 echo ""
