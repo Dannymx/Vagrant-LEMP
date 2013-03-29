@@ -11,7 +11,7 @@ echo "#########################"
 echo "#   INSTALLING MYSQL    #"
 echo "#########################"
 aptitude install -y mysql-server
-mysql_secure_installation
+# mysql_secure_installation
 sed -i 's/[mysqld]\n/[mysqld]\ncollation-server = utf8_general_ci\ncharacter-set-server = utf8/' /etc/mysql/my.cnf
 
 # php5
@@ -32,7 +32,7 @@ dpkg -s curl >/dev/null 2>&1 && {
 	echo "=> Curl currently not installed. Doing it."
 	aptitude install -y curl
 }
-echo "suhosin.executor.include.whitelist = phar" >> /etc/php5/cli/php.init
+echo "suhosin.executor.include.whitelist = phar" >> /etc/php5/cli/php.ini
 cd /home
 curl -s https://getcomposer.org/installer | php
 mv composer.phar /usr/bin/composer
