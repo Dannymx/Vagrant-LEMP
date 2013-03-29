@@ -33,7 +33,9 @@ dpkg -s curl >/dev/null 2>&1 && {
 	aptitude install -y curl
 }
 echo "suhosin.executor.include.whitelist = phar" >> /etc/php5/cli/php.init
+cd /home
 curl -s https://getcomposer.org/installer | php
+mv composer.phar /usr/bin/composer
 
 # git
 echo ""
