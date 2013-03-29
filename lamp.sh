@@ -49,4 +49,4 @@ echo ""
 echo "#########################"
 echo "#  RESTARTING APACHE2   #"
 echo "#########################"
-/etc/init.id/apache2 restart
+/etc/init.d/apache2 restart
