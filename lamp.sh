@@ -14,10 +14,11 @@ echo "#   INSTALLING MYSQL    #"
 echo "#########################"
 aptitude install -y mysql-server
 # mysql_secure_installation
+# sed -i "s/[mysqld](\n|\r\n)/[mysqld]\ncollation-server = utf8_general_ci\ncharacter-set-server = utf8\nskip-character-set-client-handshake" /etc/mysql/my.cnf
 # [mysqld]
 # collation-server = utf8_general_ci
 # character-set-server = utf8
-# skip-character-set-client-handshake 
+# skip-character-set-client-handshake
 
 # php5
 echo ""
@@ -31,20 +32,20 @@ echo ""
 echo "#########################"
 echo "#  INSTALLING COMPOSER  #"
 echo "#########################"
+echo "suhosin.executor.include.whitelist = phar" >> /etc/php5/cli/php.ini
 dpkg -s curl >/dev/null 2>&1 && {
-	echo "=> Curl allready installed skipping to composer install."
+    echo "=> Curl allready installed skipping to composer install."
 } || {
-	echo "=> Curl currently not installed. Doing it."
-	aptitude install -y curl
+    echo "=> Curl currently not installed. Doing it."
+    aptitude install -y curl
 }
 if [ -f /usr/bin/composer ]; then
-	echo "=> Composer allready installed skipping to git."
+    echo "=> Composer allready installed skipping to git."
 else
-	cd /home
-	curl -s https://getcomposer.org/installer | php
-	mv composer.phar /usr/bin/composer
+    cd /home
+    curl -s https://getcomposer.org/installer | php
+    mv composer.phar /usr/bin/composer
 fi
-echo "suhosin.executor.include.whitelist = phar" >> /etc/php5/cli/php.ini
 
 # git
 echo ""

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+aptitude install -y sqlite3
+
 cd /home
 wget http://download.opensuse.org/repositories/isv:ownCloud:community/Debian_6.0/Release.key
 apt-key add - < Release.key
