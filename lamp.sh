@@ -30,8 +30,14 @@ dpkg -s curl >/dev/null 2>&1 && {
 	echo "=> Curl allready installed skipping to composer install."
 } || {
 	echo "=> Curl currently not installed. Doing it."
-	aptitude install -y curl
+	aptitude install curl
 }
+if [ -f /usr/bin/composer ]; then
+	"=> Composer allready installed skipping to git."
+else
+	curl -s https://getcomposer.org/installer | php
+	php composer.phar install
+fi
 echo "suhosin.executor.include.whitelist = phar" >> /etc/php5/cli/php.ini
 cd /home
 curl -s https://getcomposer.org/installer | php
