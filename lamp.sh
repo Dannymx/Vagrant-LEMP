@@ -35,7 +35,7 @@ dpkg -s curl >/dev/null 2>&1 && {
 	echo "=> Curl allready installed skipping to composer install."
 } || {
 	echo "=> Curl currently not installed. Doing it."
-	aptitude install curl
+	aptitude install -y curl
 }
 if [ -f /usr/bin/composer ]; then
 	echo "=> Composer allready installed skipping to git."

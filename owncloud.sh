@@ -9,4 +9,6 @@ echo 'deb http://download.opensuse.org/repositories/isv:ownCloud:community/Debia
 apt-get update
 apt-get install owncloud
 
+cp owncloud /etc/apache2/site-available/owncloud
+a2ensite owncloud
 /etc/init.d/apache2 restart
