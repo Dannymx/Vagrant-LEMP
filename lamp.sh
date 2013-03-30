@@ -33,12 +33,7 @@ echo "#########################"
 echo "#  INSTALLING COMPOSER  #"
 echo "#########################"
 echo "suhosin.executor.include.whitelist = phar" >> /etc/php5/cli/php.ini
-dpkg -s curl >/dev/null 2>&1 && {
-    echo "=> Curl allready installed skipping to composer install."
-} || {
-    echo "=> Curl currently not installed. Doing it."
-    aptitude install -y curl
-}
+aptitude install -y curl
 if [ -f /usr/bin/composer ]; then
     echo "=> Composer allready installed skipping to git."
 else
@@ -60,3 +55,8 @@ echo "#########################"
 echo "#  RESTARTING APACHE2   #"
 echo "#########################"
 /etc/init.d/apache2 restart
+
+echo ""
+echo "#########################"
+echo "#         DONE          #"
+echo "#########################"
