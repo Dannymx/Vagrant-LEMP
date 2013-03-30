@@ -1,6 +1,7 @@
 #!/bin/bash
 
-useradd -m -p e0GPk54I teamspeak
+read -p "Teamspeak user password ? " teamspeak_password
+useradd -m -p teamspeak_password teamspeak
 cp ts3server.ini /home/teamspeak/
 cp ts3db_mysql.ini /home/teamspeak/
 
@@ -17,7 +18,7 @@ mv /home/teamspeak/ts3db_mysql.ini /home/teamspeak/core/ts3db_mysql.ini
 
 MYSQL=`which mysql`
 Q1="CREATE DATABASE IF NOT EXISTS teamspeak;"
-Q2="GRANT ALL ON teamspeak.* TO 'teamspeak'@'localhost' IDENTIFIED BY 'e0GPk54I';"
+Q2="GRANT ALL ON teamspeak.* TO 'teamspeak'@'localhost' IDENTIFIED BY '${teamspeak_password}';"
 Q3="FLUSH PRIVILEGES;"
 SQL="${Q1}${Q2}${Q3}"
 $MYSQL -u root -p -e "$SQL"
@@ -25,6 +26,6 @@ $MYSQL -u root -p -e "$SQL"
 wget http://archive.debian.org/debian/pool/main/m/mysql-dfsg-5.0/libmysqlclient15off_5.0.51a-24+lenny5_amd64.deb
 dpkg -i libmysqlclient15off_5.0.51a-24+lenny5_amd64.deb
 
-sed -i "s/your_password_for_mysql_connection/e0GPk54I/" /home/teamspeak/core/ts3db_mysql.ini
+sed -i "s/your_password_for_mysql_connection/${teamspeak_password}/" /home/teamspeak/core/ts3db_mysql.ini
 
 # su teamspeak -c '/home/teamspeak/core/ts3server_minimal_runscript.sh inifile=ts3server.ini' &
