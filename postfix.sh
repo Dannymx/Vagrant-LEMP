@@ -7,10 +7,10 @@ echo ""
 echo "#########################"
 echo "#     POSTFIX CONF      #"
 echo "#########################"
-read -p "Add your domain to the config files, so others can't abuse your mailsystem : " domain_name
+read -p "Add your domain to the config files : " domain_name
 postconf -e "myorigin = ${domain_name}"
 postconf -e "myhostname = `hostname`"
-read -p "Add the domain names that your system will handle : " domain_name_alt
+read -p "Add additionnals domains names that your system will handle : " domain_name_alt
 while [ -n "$1" ]
   do
     domain_names_alt = ", ${domain_name_alt}"

@@ -3,7 +3,8 @@ echo "#########################"
 echo "#CREATING TEAMSPEAK USER#"
 echo "#########################"
 read -p "Teamspeak user password ? " teamspeak_password
-useradd -m -p teamspeak_password teamspeak
+useradd -m teamspeak
+echo -e "${teamspeak_password}\n${teamspeak_password}" | (passwd --stdin teamspeak)
 cp ts3server.ini /home/teamspeak/
 cp ts3db_mysql.ini /home/teamspeak/
 
