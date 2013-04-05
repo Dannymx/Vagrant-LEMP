@@ -60,3 +60,20 @@ echo ""
 echo "#########################"
 echo "#         DONE          #"
 echo "#########################"
+
+Maj PHP 5.4/MySQL5.5:
+---------------------
+Ajout au /etc/apt/sources.list
+
+deb http://packages.dotdeb.org squeeze all
+deb-src http://packages.dotdeb.org squeeze all
+deb http://packages.dotdeb.org squeeze-php54 all
+deb-src http://packages.dotdeb.org squeeze-php54 all
+
+Ajout de la clé du dépot:
+wget http://www.dotdeb.org/dotdeb.gpg
+cat dotdeb.gpg | sudo apt-key add -
+
+aptitude update
+aptitude upgrade
+aptitude install php5 php5-curl php5-gd php5-mysql php5-cli php5-apc  
