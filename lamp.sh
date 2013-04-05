@@ -17,7 +17,7 @@ echo "#########################"
 echo "#  UPGRADING APTITUDE   #"
 echo "#########################"
 aptitude update -y
-aptitude upgrade -y
+aptitude safe-upgrade -y
 
 # apache2
 echo ""
@@ -95,7 +95,6 @@ echo "alias ....='cd ../../../'" >> /root/.bashrc
 echo "alias .....='cd ../../../../'" >> /root/.bashrc
 echo "alias ......='cd ../../../../../'" >> /root/.bashrc
 echo "alias a2r='/etc/init.d/apache2 restart'" >> /root/.bashrc 
-
 
 echo ""
 echo "#########################"
