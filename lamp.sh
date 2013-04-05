@@ -56,6 +56,20 @@ echo "#  RESTARTING APACHE2   #"
 echo "#########################"
 /etc/init.d/apache2 restart
 
+# add alias
+echo ""
+echo "#########################"
+echo "#       ADD ALIAS       #"
+echo "#########################"
+echo "alias l='ls -la'" >> /root/.bashrc
+echo "alias ..='cd ..'" >> /root/.bashrc
+echo "alias ...='cd ../../'" >> /root/.bashrc
+echo "alias ....='cd ../../../'" >> /root/.bashrc
+echo "alias .....='cd ../../../../'" >> /root/.bashrc
+echo "alias ......='cd ../../../../../'" >> /root/.bashrc
+echo "alias a2r='/etc/init.d/apache2 restart'" >> /root/.bashrc 
+
+
 echo ""
 echo "#########################"
 echo "#         DONE          #"
