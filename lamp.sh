@@ -1,6 +1,26 @@
 #!/bin/bash
 
+echo "#########################"
+echo "# ADDING DOTDEB SOURCES #"
+echo "#########################"
+echo "deb http://packages.dotdeb.org squeeze all" > /etc/atp/source.list
+echo "deb-src http://packages.dotdeb.org squeeze all" > /etc/atp/source.list
+echo "deb http://packages.dotdeb.org squeeze-php54 all" > /etc/atp/source.list
+echo "deb-src http://packages.dotdeb.org squeeze-php54 all" > /etc/atp/source.list
+cd /home
+wget http://www.dotdeb.org/dotdeb.gpg
+cat dotdeb.gpg | sudo apt-key add -
+rm dotdeb.gpg
+
+echo ""
+echo "#########################"
+echo "#  UPGRADING APTITUDE   #"
+echo "#########################"
+aptitude update -y
+aptitude upgrade -y
+
 # apache2
+echo ""
 echo "#########################"
 echo "#  INSTALLING APACHE2   #"
 echo "#########################"
@@ -25,7 +45,7 @@ echo ""
 echo "#########################"
 echo "#    INSTALLING PHP5    #"
 echo "#########################"
-aptitude install -y php5 php5-mysql
+aptitude install -y php5 php5-curl php5-gd php5-mysql php5-cli php5-apc
 
 # composer
 echo ""
@@ -81,20 +101,3 @@ echo ""
 echo "#########################"
 echo "#         DONE          #"
 echo "#########################"
-
-#Maj PHP 5.4/MySQL5.5:
-#---------------------
-#Ajout au /etc/apt/sources.list
-
-#deb http://packages.dotdeb.org squeeze all
-#deb-src http://packages.dotdeb.org squeeze all
-#deb http://packages.dotdeb.org squeeze-php54 all
-#deb-src http://packages.dotdeb.org squeeze-php54 all
-
-#Ajout de la clé du dépot:
-#wget http://www.dotdeb.org/dotdeb.gpg
-#cat dotdeb.gpg | sudo apt-key add -
-
-# aptitude update
-# aptitude upgrade
-# aptitude install php5 php5-curl php5-gd php5-mysql php5-cli php5-apc  
