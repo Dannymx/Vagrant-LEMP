@@ -6,7 +6,7 @@ echo "#########################"
 echo "deb http://packages.dotdeb.org squeeze all" >> /etc/atp/source.list
 echo "deb-src http://packages.dotdeb.org squeeze all" >> /etc/atp/source.list
 echo "deb http://packages.dotdeb.org squeeze-php54 all" >> /etc/atp/source.list
-echo "deb-src http://packages.dotdeb.org squeeze-php54 all" >> /etc/atp/source.list
+echo "deb-src http://packages.dotdeb.org squeeze-php54 all" >> /etc/apt/source.list
 cd /home
 wget http://www.dotdeb.org/dotdeb.gpg
 cat dotdeb.gpg | sudo apt-key add -
