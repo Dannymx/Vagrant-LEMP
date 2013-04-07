@@ -3,10 +3,10 @@
 echo "#########################"
 echo "# ADDING DOTDEB SOURCES #"
 echo "#########################"
-echo "deb http://packages.dotdeb.org squeeze all" >> /etc/apt/source.list
-echo "deb-src http://packages.dotdeb.org squeeze all" >> /etc/apt/source.list
-echo "deb http://packages.dotdeb.org squeeze-php54 all" >> /etc/apt/source.list
-echo "deb-src http://packages.dotdeb.org squeeze-php54 all" >> /etc/apt/source.list
+echo "deb http://packages.dotdeb.org squeeze all" >> /etc/apt/sources.list
+echo "deb-src http://packages.dotdeb.org squeeze all" >> /etc/apt/sources.list
+echo "deb http://packages.dotdeb.org squeeze-php54 all" >> /etc/apt/sources.list
+echo "deb-src http://packages.dotdeb.org squeeze-php54 all" >> /etc/apt/sources.list
 cd /home
 wget http://www.dotdeb.org/dotdeb.gpg
 cat dotdeb.gpg | sudo apt-key add -
@@ -69,9 +69,11 @@ sudo /etc/init.d/apache2 restart
 # add vim
 echo ""
 echo "#########################"
-echo "#          VIM          #"
+echo "#      VIM CUSTOM       #"
 echo "#########################"
 sudo aptitude install -y vim
+echo "syntax on" >> /home/vagrant/.vimrc
+echo "set number" >> /home/vagrant/.vimrc
 
 # add alias
 echo ""
