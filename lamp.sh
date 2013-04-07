@@ -30,27 +30,12 @@ echo "#########################"
 sudo aptitude install -y apache2
 sudo a2enmod rewrite
 
-# mysql
-echo ""
-echo "#########################"
-echo "#   INSTALLING MYSQL    #"
-echo "#########################"
-sudo debconf-set-selections <<< 'mysql-server-5.1 mysql-server/root_password password toor'
-sudo debconf-set-selections <<< 'mysql-server-5.1 mysql-server/root_password_again password toor'
-sudo aptitude install -y mysql-server
-# mysql_secure_installation
-# sed -i "s/[mysqld](\n|\r\n)/[mysqld]\ncollation-server = utf8_general_ci\ncharacter-set-server = utf8\nskip-character-set-client-handshake" /etc/mysql/my.cnf
-# [mysqld]
-# collation-server = utf8_general_ci
-# character-set-server = utf8
-# skip-character-set-client-handshake
-
 # php5
 echo ""
 echo "#########################"
 echo "#    INSTALLING PHP5    #"
 echo "#########################"
-sudo aptitude install -y php5 php5-fpm php5-curl php5-gd php5-mysql php5-cli php5-apc
+sudo aptitude install -y php5 php5-fpm php5-curl php5-gd php5-cli php5-apc
 
 # composer
 echo ""
