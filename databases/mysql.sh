@@ -14,10 +14,3 @@ sudo aptitude install -y mysql-server
 # collation-server = utf8_general_ci
 # character-set-server = utf8
 # skip-character-set-client-handshake
-
-# php5 for mysql
-echo ""
-echo "#########################"
-echo "# INSTALLING PHP5-MYSQL #"
-echo "#########################"
-sudo aptitude install -y php5-mysql 
