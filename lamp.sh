@@ -27,7 +27,7 @@ echo ""
 echo "#########################"
 echo "#  INSTALLING APACHE2   #"
 echo "#########################"
-sudo aptitude install -y apache2
+sudo aptitude install -y apache2 libapache2-mod-php5
 sudo a2enmod rewrite
 
 # php5
@@ -45,7 +45,7 @@ echo "#########################"
 echo "suhosin.executor.include.whitelist = phar" >> /etc/php5/cli/php.ini
 sudo aptitude install -y curl
 if [ -f /usr/bin/composer ]; then
-    echo "=> Composer allready installed skipping to git."
+    echo "=> Composer already installed skipping to git."
 else
     cd /home
     curl -s https://getcomposer.org/installer | php
@@ -65,6 +65,8 @@ echo "#########################"
 echo "#  RESTARTING APACHE2   #"
 echo "#########################"
 sudo /etc/init.d/apache2 restart
+sudo rm /var/www/index.html
+sudo echo "<?php phpinfo(); ?>" >> /var/www/index.php 
 
 # add vim
 echo ""
