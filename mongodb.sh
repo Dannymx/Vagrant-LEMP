@@ -19,7 +19,7 @@ echo ""
 echo "#########################"
 echo "#   MONGO WITH APACHE   #"
 echo "#########################"
-echo "extension=mongo.so" >> /etc/php5/cli/php.ini
+echo "extension=mongo.so" >> /etc/php5/apache2/php.ini
 
 # restarting apache2
 echo ""
