@@ -13,26 +13,31 @@ cat dotdeb.gpg | sudo apt-key add -
 rm dotdeb.gpg
 
 echo ""
-echo "#########################"
-echo "#  UPGRADING APTITUDE   #"
-echo "#########################"
-aptitude update -y
-aptitude safe-upgrade -y
+echo "#################################"
+echo "#  UPGRADING APTITUDE & STUFF   #"
+echo "#################################"
+sudo echo grub-common hold | dpkg --set-selections
+sudo echo grub-pc hold | dpkg --set-selections
+sudo apt-get update --fix-missing 
+sudo aptitude safe-upgrade -y
+sudo aptitude install -y nfs-common
 
 # apache2
 echo ""
 echo "#########################"
 echo "#  INSTALLING APACHE2   #"
 echo "#########################"
-aptitude install -y apache2
-a2enmod rewrite
+sudo aptitude install -y apache2
+sudo a2enmod rewrite
 
 # mysql
 echo ""
 echo "#########################"
 echo "#   INSTALLING MYSQL    #"
 echo "#########################"
-aptitude install -y mysql-server
+sudo debconf-set-selections <<< 'mysql-server-5.1 mysql-server/root_password password toor'
+sudo debconf-set-selections <<< 'mysql-server-5.1 mysql-server/root_password_again password toor'
+sudo aptitude install -y mysql-server
 # mysql_secure_installation
 # sed -i "s/[mysqld](\n|\r\n)/[mysqld]\ncollation-server = utf8_general_ci\ncharacter-set-server = utf8\nskip-character-set-client-handshake" /etc/mysql/my.cnf
 # [mysqld]
@@ -45,7 +50,7 @@ echo ""
 echo "#########################"
 echo "#    INSTALLING PHP5    #"
 echo "#########################"
-aptitude install -y php5 php5-curl php5-gd php5-mysql php5-cli php5-apc
+sudo aptitude install -y php5 php5-fpm php5-curl php5-gd php5-mysql php5-cli php5-apc
 
 # composer
 echo ""
@@ -53,7 +58,7 @@ echo "#########################"
 echo "#  INSTALLING COMPOSER  #"
 echo "#########################"
 echo "suhosin.executor.include.whitelist = phar" >> /etc/php5/cli/php.ini
-aptitude install -y curl
+sudo aptitude install -y curl
 if [ -f /usr/bin/composer ]; then
     echo "=> Composer allready installed skipping to git."
 else
@@ -67,34 +72,34 @@ echo ""
 echo "#########################"
 echo "#    INSTALLING GIT     #"
 echo "#########################"
-aptitude install -y git
+sudo aptitude install -y git
 
 # restarting apache2
 echo ""
 echo "#########################"
 echo "#  RESTARTING APACHE2   #"
 echo "#########################"
-/etc/init.d/apache2 restart
+sudo /etc/init.d/apache2 restart
 
 # add vim
 echo ""
 echo "#########################"
 echo "#          VIM          #"
 echo "#########################"
-aptitude install -y vim
+sudo aptitude install -y vim
 
 # add alias
 echo ""
 echo "#########################"
 echo "#       ADD ALIAS       #"
 echo "#########################"
-echo "alias l='ls -la'" >> /root/.bashrc
-echo "alias ..='cd ..'" >> /root/.bashrc
-echo "alias ...='cd ../../'" >> /root/.bashrc
-echo "alias ....='cd ../../../'" >> /root/.bashrc
-echo "alias .....='cd ../../../../'" >> /root/.bashrc
-echo "alias ......='cd ../../../../../'" >> /root/.bashrc
-echo "alias a2r='/etc/init.d/apache2 restart'" >> /root/.bashrc 
+echo "alias l='ls -la'" >> /home/vagrant/.bashrc
+echo "alias ..='cd ..'" >> /home/vagrant/.bashrc
+echo "alias ...='cd ../../'" >> /home/vagrant/.bashrc
+echo "alias ....='cd ../../../'" >> /home/vagrant/.bashrc
+echo "alias .....='cd ../../../../'" >> /home/vagrant/.bashrc
+echo "alias ......='cd ../../../../../'" >> /home/vagrant/.bashrc
+echo "alias a2r='/etc/init.d/apache2 restart'" >> /home/vagrant/.bashrc 
 
 echo ""
 echo "#########################"
