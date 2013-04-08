@@ -35,7 +35,7 @@ echo ""
 echo "#########################"
 echo "#    INSTALLING PHP5    #"
 echo "#########################"
-sudo aptitude install -y php5 php5-fpm php5-curl php5-gd php5-cli php5-apc
+sudo aptitude install -y php5 php5-fpm php5-curl php5-gd php5-cli php5-apc php5-intl
 
 # composer
 echo ""
