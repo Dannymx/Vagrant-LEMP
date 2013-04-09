@@ -57,3 +57,8 @@ find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,
 
 /etc/init.d/apache2 restart
 
+php ezpublish/console assets:install --symlink web
+php ezpublish/console ezpublish:legacy:assets_install --symlink web
+
+[RepositorySettings]
+RemotePackagesIndexURL=http://packages.ez.no/ezpublish/5.0/5.0.0
