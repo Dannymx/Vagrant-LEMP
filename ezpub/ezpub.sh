@@ -9,7 +9,7 @@ git clone https://github.com/ezsystems/ezpublish-community.git project_name
 cd project_path/project_name
 git clone https://github.com/ezsystems/ezpublish-legacy.git ezpublish_legacy
 
-php composer.phar install --prefer-dist
+composer install --prefer-dist
 
 chown -R www-data:www-data ezpublish/{cache,logs,config} ezpublish_legacy/{design,extension,settings,var}
 find {ezpublish/{cache,logs,config},ezpublish_legacy/{design,extension,settings,var}} -type d | xargs chmod -R 775
