@@ -76,6 +76,7 @@ echo "#########################"
 sudo aptitude install -y vim
 echo "syntax on" >> /home/vagrant/.vimrc
 echo "set number" >> /home/vagrant/.vimrc
+sudo cp /home/vagrant/.vimrc /root/ && sudo chown root:root /root/.vimrc
 
 # add alias
 echo ""
@@ -89,6 +90,17 @@ echo "alias ....='cd ../../../'" >> /home/vagrant/.bashrc
 echo "alias .....='cd ../../../../'" >> /home/vagrant/.bashrc
 echo "alias ......='cd ../../../../../'" >> /home/vagrant/.bashrc
 echo "alias a2r='/etc/init.d/apache2 restart'" >> /home/vagrant/.bashrc 
+
+# @TODO put this in a specific SF2 file.
+# Symfony2 alias 
+# echo ""
+# echo "#########################"
+# echo "#       SF2 ALIAS       #"
+# echo "#########################"
+# echo "sf2 = 'php app/console'" >> /home/vagrant/.bashrc
+# echo "sf2clear = 'php app/console cache:clear'" >> /home/vagrant/.bashrc
+
+sudo cp /home/vagrant/.bashrc /root/ && sudo chown root:root /root/.bashrc
 
 echo ""
 echo "#########################"
