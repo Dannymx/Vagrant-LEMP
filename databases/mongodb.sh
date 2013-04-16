@@ -3,7 +3,7 @@
 # set up APT
 echo ""
 echo "#########################"
-echo "#       SET UP ATP      #"
+echo "#       SET UP APT      #"
 echo "#########################"
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 sudo echo "deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen" >> /etc/apt/sources.list.d/10gen.list
