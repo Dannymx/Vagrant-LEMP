@@ -22,15 +22,6 @@ sudo apt-get update --fix-missing
 sudo aptitude safe-upgrade -y
 sudo aptitude install -y nfs-common
 
-# apache2
-echo ""
-echo "#########################"
-echo "#  INSTALLING APACHE2   #"
-echo "#########################"
-sudo aptitude install -y apache2 libapache2-mod-php5
-sudo a2enmod rewrite
-# sudo a2enmod deflate expires rewrite # todo check it
-
 # php5
 echo ""
 echo "#########################"
@@ -59,15 +50,6 @@ echo "#########################"
 echo "#    INSTALLING GIT     #"
 echo "#########################"
 sudo aptitude install -y git
-
-# restarting apache2
-echo ""
-echo "#########################"
-echo "#  RESTARTING APACHE2   #"
-echo "#########################"
-sudo /etc/init.d/apache2 restart
-sudo rm /var/www/index.html
-sudo echo "<?php phpinfo(); ?>" >> /var/www/index.php 
 
 # add vim
 echo ""
@@ -101,6 +83,7 @@ echo "alias a2r='/etc/init.d/apache2 restart'" >> /home/vagrant/.bashrc
 # echo "sf2 = 'php app/console'" >> /home/vagrant/.bashrc
 # echo "sf2clear = 'php app/console cache:clear'" >> /home/vagrant/.bashrc
 
+sudo echo "<?php phpinfo(); ?>" >> /var/www/index.php 
 sudo cp /home/vagrant/.bashrc /root/ && sudo chown root:root /root/.bashrc
 
 echo ""

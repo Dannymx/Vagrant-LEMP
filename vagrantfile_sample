@@ -18,7 +18,15 @@ Vagrant::Config.run do |config|
     config.vm.share_folder "project", "/var/www/sites", "./sites", :nfs => !Kernel.is_windows, :create => true, :remount => true
 
     config.vm.provision :shell, :inline => "echo \"Europe/Paris\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
+
+    # SERVER INSTALL
+    config.vm.provision :shell, :path => "servers/apache.sh"
+    #config.vm.provision :shell, :path => "servers/nginx.sh"
+    
+    # STUFF
     config.vm.provision :shell, :path => "bootstrap.sh"
+
+    # DATABASE
     config.vm.provision :shell, :path => "databases/mysql.sh"
     #config.vm.provision :shell, :path => "databases/sqlite3.sh"
     #config.vm.provision :shell, :path => "databases/mongodb.sh"
