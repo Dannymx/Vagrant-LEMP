@@ -29,6 +29,7 @@ echo "#  INSTALLING APACHE2   #"
 echo "#########################"
 sudo aptitude install -y apache2 libapache2-mod-php5
 sudo a2enmod rewrite
+# sudo a2enmod deflate expires rewrite # todo check it
 
 # php5
 echo ""
