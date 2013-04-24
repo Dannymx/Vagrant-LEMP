@@ -13,4 +13,4 @@ echo "#########################"
 echo "#  RESTARTING APACHE2   #"
 echo "#########################"
 sudo /etc/init.d/apache2 restart
-sudo rm /var/www/index.html
+sudo rm /var/www/index.php
