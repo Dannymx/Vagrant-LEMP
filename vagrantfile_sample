@@ -10,7 +10,7 @@ Vagrant::Config.run do |config|
     config.vm.customize [ "modifyvm", :id, "--name", "devstation" ]
     config.vm.customize [ "modifyvm", :id, "--memory", "1024", "--cpus", "1" ]
 
-    config.vm.network :forwarded_port, guest: 80, host: 8080
+    # config.vm.network :forwarded_port, guest: 80, host: 8080
     config.vm.network :hostonly, "11.11.11.11"
     config.vm.host_name = "devstation"
 
@@ -18,16 +18,16 @@ Vagrant::Config.run do |config|
     config.vm.share_folder "project", "/var/www/sites", "./sites", :nfs => !Kernel.is_windows, :create => true, :remount => true
 
     config.vm.provision :shell, :inline => "echo \"Europe/Paris\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
+        
+    # STUFF
+    config.vm.provision :shell, :path => "bootstrap.sh"
 
     # SERVER INSTALL
     config.vm.provision :shell, :path => "servers/apache.sh"
     #config.vm.provision :shell, :path => "servers/nginx.sh"
-    
-    # STUFF
-    config.vm.provision :shell, :path => "bootstrap.sh"
 
     # DATABASE
     config.vm.provision :shell, :path => "databases/mysql.sh"
-    #config.vm.provision :shell, :path => "databases/sqlite3.sh"
-    #config.vm.provision :shell, :path => "databases/mongodb.sh"
+    # config.vm.provision :shell, :path => "databases/sqlite3.sh"
+    # config.vm.provision :shell, :path => "databases/mongodb.sh"
 end
