@@ -18,7 +18,7 @@ echo "#  UPGRADING APTITUDE & STUFF   #"
 echo "#################################"
 sudo echo grub-common hold | dpkg --set-selections
 sudo echo grub-pc hold | dpkg --set-selections
-sudo apt-get update --fix-missing 
+sudo apt-get update --fix-missing
 sudo aptitude safe-upgrade -y
 sudo aptitude install -y nfs-common
 
