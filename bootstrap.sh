@@ -73,15 +73,17 @@ echo "alias ....='cd ../../../'" >> /home/vagrant/.bashrc
 echo "alias .....='cd ../../../../'" >> /home/vagrant/.bashrc
 echo "alias ......='cd ../../../../../'" >> /home/vagrant/.bashrc
 echo "alias a2r='/etc/init.d/apache2 restart'" >> /home/vagrant/.bashrc 
+echo "alais a2l='tail -f /var/log/apache2/error.log'" >> /home/vagrant/.bashrc
 
-# @TODO put this in a specific SF2 file.
-# Symfony2 alias 
-# echo ""
-# echo "#########################"
-# echo "#       SF2 ALIAS       #"
-# echo "#########################"
-# echo "sf2 = 'php app/console'" >> /home/vagrant/.bashrc
-# echo "sf2clear = 'php app/console cache:clear'" >> /home/vagrant/.bashrc
+# Git alias 
+echo ""
+echo "#########################"
+echo "#       GIT ALIAS       #"
+echo "#########################"
+echo "alias ga='git add .'" >> /home/vagrant/.bashrc
+echo "alias gca='git commit -a -m'" >> /home/vagrant/.bashrc
+echo "alias gph='git push'" >> /home/vagrant/.bashrc
+echo "alias gcl='git pull'" >> /home/vagrant/.bashrc
 
 sudo echo "<?php phpinfo(); ?>" >> /var/www/index.php 
 sudo cp /home/vagrant/.bashrc /root/ && sudo chown root:root /root/.bashrc
