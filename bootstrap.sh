@@ -73,7 +73,7 @@ echo "alias ....='cd ../../../'" >> /home/vagrant/.bashrc
 echo "alias .....='cd ../../../../'" >> /home/vagrant/.bashrc
 echo "alias ......='cd ../../../../../'" >> /home/vagrant/.bashrc
 echo "alias a2r='/etc/init.d/apache2 restart'" >> /home/vagrant/.bashrc 
-echo "alais a2l='tail -f /var/log/apache2/error.log'" >> /home/vagrant/.bashrc
+echo "alias a2l='tail -f /var/log/apache2/error.log'" >> /home/vagrant/.bashrc
 
 # Git alias 
 echo ""
