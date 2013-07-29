@@ -29,11 +29,4 @@ echo "#########################"
 echo "#   MONGO WITH APACHE   #"
 echo "#########################"
 echo "extension=mongo.so" >> /etc/php5/apache2/php.ini
-
-# restarting apache2
-echo ""
-echo "#########################"
-echo "#  RESTARTING SERVICES  #"
-echo "#########################"
-sudo /etc/init.d/apache2 restart
-sudo /etc/init.d/mongodb restart
+echo "extension=mongo.so" >> /etc/php5/fpm/php.ini

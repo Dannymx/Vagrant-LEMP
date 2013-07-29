@@ -30,4 +30,8 @@ Vagrant::Config.run do |config|
     config.vm.provision :shell, :path => "databases/mysql.sh"
     # config.vm.provision :shell, :path => "databases/sqlite3.sh"
     # config.vm.provision :shell, :path => "databases/mongodb.sh"
+
+    # FRAMEWORK
+    config.vm.provision :shell, :path => "phalcon/phalcon.sh"
+    
 end
