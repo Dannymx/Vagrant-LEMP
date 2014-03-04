@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # SERVER INSTALL
     # config.vm.provision :shell, :path => "servers/apache.sh"
-    # config.vm.provision :shell, :path => "servers/nginx.sh"
+    config.vm.provision :shell, :path => "servers/nginx.sh"
 
     # DATABASE
     config.vm.provision :shell, :path => "databases/mysql.sh"
