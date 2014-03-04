@@ -5,8 +5,8 @@ echo "# ADDING DOTDEB SOURCES #"
 echo "#########################"
 echo "deb http://packages.dotdeb.org wheezy all" >> /etc/apt/sources.list
 echo "deb-src http://packages.dotdeb.org wheezy all" >> /etc/apt/sources.list
-echo "deb http://packages.dotdeb.org wheezy-php54 all" >> /etc/apt/sources.list
-echo "deb-src http://packages.dotdeb.org wheezy-php54 all" >> /etc/apt/sources.list
+echo "deb http://packages.dotdeb.org squeeze-php54 all" >> /etc/apt/sources.list
+echo "deb-src http://packages.dotdeb.org squeeze-php54 all" >> /etc/apt/sources.list
 wget http://www.dotdeb.org/dotdeb.gpg
 cat dotdeb.gpg | sudo apt-key add -
 rm dotdeb.gpg
@@ -28,7 +28,7 @@ echo ""
 echo "#########################"
 echo "#    INSTALLING PHP5    #"
 echo "#########################"
-sudo apt-get install -y php5 php5-fpm php5-curl php5-gd php5-cli php5-apc php5-intl php5-mcrypt
+sudo apt-get install -y php5 php5-fpm php5-curl php5-gd php5-cli php5-apc php5-intl php5-mcrypt php5-mysql
 
 # composer
 echo ""
@@ -36,7 +36,7 @@ echo "#########################"
 echo "#  INSTALLING COMPOSER  #"
 echo "#########################"
 if [ -f /usr/bin/composer ]; then
-    echo "=> Composer already installed skipping to git."
+    echo "=> Composer already installed, skipping."
 else
     curl -s https://getcomposer.org/installer | php
     mv composer.phar /usr/bin/composer
